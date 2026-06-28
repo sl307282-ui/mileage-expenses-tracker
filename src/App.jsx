@@ -275,8 +275,11 @@ function App() {
         }
 
         if (config.latestVersionCode > localBuild) {
-          setUpdateInfo(config);
-          setShowUpdateModal(true);
+          const dismissedVersion = localStorage.getItem('dismissed_update_version');
+          if (config.forceUpdate || dismissedVersion !== String(config.latestVersionCode)) {
+            setUpdateInfo(config);
+            setShowUpdateModal(true);
+          }
         }
       } catch (err) {
         console.warn('Update check failed:', err);
@@ -1012,7 +1015,10 @@ function App() {
               {!updateInfo.forceUpdate && (
                 <button
                   className="btn btn-outline flex-1"
-                  onClick={() => setShowUpdateModal(false)}
+                  onClick={() => {
+                    localStorage.setItem('dismissed_update_version', String(updateInfo.latestVersionCode));
+                    setShowUpdateModal(false);
+                  }}
                   style={{ height: '44px', borderRadius: '12px' }}
                 >
                   Later
