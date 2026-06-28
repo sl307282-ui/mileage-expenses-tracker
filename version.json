@@ -1,0 +1,7 @@
+{
+  "latestVersionCode": 5,
+  "latestVersionName": "1.2.2",
+  "updateUrl": "https://play.google.com/store/apps/details?id=com.mileageexpensetracker.app",
+  "forceUpdate": false,
+  "releaseNotes": "• Added automatic update notification popup\n• Fine-tuned UI spacing and drawer layouts\n• Performance optimizations"
+}
